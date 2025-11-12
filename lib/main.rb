@@ -8,20 +8,24 @@ require_relative File.join(__dir__, 'logger_manager')
 require_relative File.join(__dir__, 'item')
 require_relative File.join(__dir__, 'cart')
 
+require_relative File.join(__dir__, 'configurator')
+
 include MyApplicationPandarov
 
-# 1️⃣ Завантаження бібліотек
-loader = AppConfigLoader.new
-loader.load_libs
+begin
+  # 1️⃣ Завантаження бібліотек
+  loader = AppConfigLoader.new
+  loader.load_libs
 
-# 2️⃣ Завантаження конфігурацій
-loader.config('config/default_config.yaml', 'config') do |config|
-  puts "✅ Конфігурації завантажено!"
-  loader.pretty_print_config_data
+  # 2️⃣ Завантаження конфігурацій
+  loader.config('config/default_config.yaml', 'config') do |config|
+    puts "✅ Конфігурації завантажено!"
+    loader.pretty_print_config_data
 
-  # 3️⃣ Ініціалізація логування
-  LoggerManager.initialize_logger(config['logging'])
-  LoggerManager.log_processed_file('config.yaml')
+    # 3️⃣ Ініціалізація логування
+    LoggerManager.initialize_logger(config['logging'])
+    LoggerManager.log_processed_file('config.yaml')
+  end
 
   # -----------------------------
   # 4️⃣ Тестування Cart / ItemCollection
@@ -57,6 +61,30 @@ loader.config('config/default_config.yaml', 'config') do |config|
   cart.save_to_csv("output/cart.csv")
   cart.save_to_yml("output/yml_items")
 
+  # -----------------------------
+  # 5️⃣ Тестування Configurator (3.3)
+  # -----------------------------
+  puts "\n--- Тестування Configurator ---"
+
+  configurator = Configurator.new
+  puts "Доступні методи: #{Configurator.available_methods}"
+
+  # Налаштування конфігурацій з тестовим неправильним ключем
+  configurator.configure(
+    run_website_parser: 1,
+    run_save_to_csv: 1,
+    run_save_to_yaml: 1,
+    run_save_to_sqlite: 1,
+    run_save_to_mongodb: 1,
+    invalid_key: 1 # Попередження про недійсний ключ
+  )
+
+  puts "\nПоточна конфігурація Configurator:"
+  configurator.config.each do |key, value|
+    puts "#{key}: #{value}"
+  end
+
 rescue StandardError => e
-  LoggerManager.log_error("Помилка при завантаженні конфігурацій: #{e.message}")
+  LoggerManager.log_error("Помилка виконання main.rb: #{e.message}")
+  puts "❌ Виникла помилка: #{e.message}"
 end
