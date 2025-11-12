@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Intelligent Copper Lamp",
+    "price": 245.0,
+    "description": "Itaque qui laborum est omnis dolor et officiis maiores consequuntur.",
+    "category": "Baby & Movies",
+    "image_path": "media//dicta.png"
+  },
+  {
+    "name": "Sleek Steel Lamp",
+    "price": 17.0,
+    "description": "Suscipit laudantium et quas doloremque veniam sed voluptas in velit.",
+    "category": "Music, Industrial & Grocery",
+    "image_path": "media//corrupti.png"
+  },
+  {
+    "name": "Aerodynamic Aluminum Hat",
+    "price": 398.0,
+    "description": "Aspernatur aut ipsum repellat eum maiores ex incidunt reprehenderit rerum.",
+    "category": "Industrial, Garden & Toys",
+    "image_path": "media//et.png"
+  },
+  {
+    "name": "Ergonomic Rubber Clock",
+    "price": 411.0,
+    "description": "Commodi quis qui dolores et adipisci consequatur dolor omnis dolorem.",
+    "category": "Computers",
+    "image_path": "media//ut.png"
+  },
+  {
+    "name": "Ergonomic Paper Hat",
+    "price": 39.0,
+    "description": "Sed fugit deserunt aut temporibus unde saepe enim voluptas autem.",
+    "category": "Beauty",
+    "image_path": "media//hic.png"
+  },
+  {
+    "name": "Спеціальний товар",
+    "price": 999,
+    "description": "Це тестовий опис",
+    "category": "Вітаміни",
+    "image_path": "media/vitamins/special_item.png"
+  }
+]

@@ -3,10 +3,10 @@ require 'yaml'
 require 'erb'
 require 'json'
 require 'logger'
-
-require_relative 'logger_manager'
-require_relative 'app_config_loader'
-require_relative 'item'
+require_relative File.join(__dir__, 'app_config_loader')
+require_relative File.join(__dir__, 'logger_manager')
+require_relative File.join(__dir__, 'item')
+require_relative File.join(__dir__, 'cart')
 
 include MyApplicationPandarov
 
@@ -23,31 +23,40 @@ loader.config('config/default_config.yaml', 'config') do |config|
   LoggerManager.initialize_logger(config['logging'])
   LoggerManager.log_processed_file('config.yaml')
 
-  # 4️⃣ Тестування класу Item
-  puts "\n--- Тестування Item ---"
+  # -----------------------------
+  # 4️⃣ Тестування Cart / ItemCollection
+  # -----------------------------
+  puts "\n--- Тестування Cart ---"
 
-  # Создание фейкового товара
-  item1 = Item.generate_fake
-  puts "Фейковий товар: #{item1.info}"
+  cart = Cart.new
 
-  # Создание товара с блоком
-  item2 = Item.new(name: "Тестовий товар", price: 150) do |i|
+  # Генерація 5 тестових товарів
+  cart.generate_test_items(5)
+  puts "Додано фейкові товари:"
+  cart.show_all_items
+
+  # Додамо конкретний товар через блок
+  item = Item.new(name: "Спеціальний товар", price: 999) do |i|
     i.description = "Це тестовий опис"
     i.category = "Вітаміни"
-    i.image_path = "media/vitamins/test_item.png"
+    i.image_path = "media/vitamins/special_item.png"
   end
-  puts "Товар з блоком: #{item2.info}"
+  cart.add_item(item)
 
-  # Обновление через блок
-  item2.update do |i|
-    i.price = 200
-    i.name = "Оновлений тестовий товар"
-  end
-  puts "Після оновлення: #{item2.info}"
+  puts "\nПісля додавання спеціального товару:"
+  cart.show_all_items
 
-  # Сравнение товаров
-  puts "Порівняння по ціні: item1 <=> item2 = #{item1 <=> item2}"
+  # Використовуємо методи Enumerable
+  expensive_items = cart.select { |i| i.price > 500 }
+  puts "\nТовари з ціною > 500:"
+  expensive_items.each { |i| puts i.info }
+
+  # Збереження у файли
+  cart.save_to_file("output/cart.txt")
+  cart.save_to_json("output/cart.json")
+  cart.save_to_csv("output/cart.csv")
+  cart.save_to_yml("output/yml_items")
 
 rescue StandardError => e
-  LoggerManager.log_error("Помилка при завантаженні конфігурацій або тестуванні Item: #{e.message}")
+  LoggerManager.log_error("Помилка при завантаженні конфігурацій: #{e.message}")
 end

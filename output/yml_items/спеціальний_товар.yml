@@ -1,0 +1,6 @@
+---
+name: Спеціальний товар
+price: 999
+description: Це тестовий опис
+category: Вітаміни
+image_path: media/vitamins/special_item.png
