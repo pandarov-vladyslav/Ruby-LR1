@@ -1,41 +1,37 @@
 # frozen_string_literal: true
 
-require 'nokogiri'
-require 'httparty'
-require 'csv'
+require 'yaml'
+require 'erb'
 require 'json'
+require 'logger'
 
-BASE_URL = 'https://quotes.toscrape.com/page/'
-OUTPUT_CSV = 'output/data.csv'
-OUTPUT_JSON = 'output/data.json'
+# Надійне підключення локальних бібліотек
+require_relative 'app_config_loader'
+require_relative 'logger_manager'
 
-quotes = []
+# Підключаємо модуль
+include MyApplicationPandarov
 
-puts 'Збір даних...'
+begin
+  # Завантаження бібліотек
+  loader = AppConfigLoader.new
+  loader.load_libs
 
-(1..3).each do |page|
-  response = HTTParty.get("#{BASE_URL}#{page}/")
-  document = Nokogiri::HTML(response.body)
+  # Завантаження конфігурацій
+  loader.config('config/default_config.yaml', 'config') do |config|
+    puts "Конфігурації завантажено!"
+    loader.pretty_print_config_data
 
-  document.css('.quote').each do |quote_block|
-    text = quote_block.css('.text').text.strip
-    author = quote_block.css('.author').text.strip
-    tags = quote_block.css('.tag').map(&:text).join(', ')
+    # Ініціалізація логування
+    LoggerManager.initialize_logger(config['logging'])
+    LoggerManager.log_processed_file('config.yaml')
+  end
 
-    quotes << { text: text, author: author, tags: tags }
+rescue StandardError => e
+  # Логування помилок
+  if defined?(LoggerManager) && LoggerManager.respond_to?(:log_error)
+    LoggerManager.log_error("Помилка при завантаженні конфігурацій: #{e.message}")
+  else
+    puts "Помилка: #{e.message}"
   end
 end
-
-puts "Отримано #{quotes.size} цитат."
-
-# Збереження у CSV
-CSV.open(OUTPUT_CSV, 'w', write_headers: true, headers: %w[text author tags]) do |csv|
-  quotes.each { |q| csv << q.values }
-end
-
-# Збереження у JSON
-File.write(OUTPUT_JSON, JSON.pretty_generate(quotes))
-
-puts 'Дані збережено у:'
-puts " - #{OUTPUT_CSV}"
-puts " - #{OUTPUT_JSON}"
