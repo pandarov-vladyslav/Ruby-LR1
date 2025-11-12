@@ -7,3 +7,4 @@ gem 'httparty'
 gem 'json'
 gem 'nokogiri'
 gem 'rubocop', require: false
+gem 'faker'
