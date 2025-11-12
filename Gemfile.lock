@@ -47,7 +47,9 @@ PLATFORMS
   x64-mingw-ucrt
 
 DEPENDENCIES
+  csv
   httparty
+  json
   nokogiri
   rubocop
 

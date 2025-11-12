@@ -1,6 +1,9 @@
-# Gemfile
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-gem "nokogiri"
-gem "httparty"
-gem "rubocop", require: false
+source 'https://rubygems.org'
+
+gem 'csv'
+gem 'httparty'
+gem 'json'
+gem 'nokogiri'
+gem 'rubocop', require: false
