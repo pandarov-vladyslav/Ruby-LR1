@@ -44,9 +44,9 @@ module MyApplicationPandarov
     def run_method(method_name)
       return unless config.dig(method_name.to_s) == 1
 
-      log("🔹 Початок #{method_name}")
+      log("Початок #{method_name}")
       send(method_name)
-      log("🔹 Завершено #{method_name}")
+      log("Завершено #{method_name}")
     rescue StandardError => e
       log_error("Помилка #{method_name}: #{e.message}")
     end

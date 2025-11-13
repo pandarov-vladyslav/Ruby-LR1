@@ -47,7 +47,7 @@ module MyApplicationPandarov
       puts JSON.pretty_generate(@config_data)
     end
 
-    # 🔹 Додано класовий метод
+    # Класовий метод
     def self.load_config(file_path)
       yaml_content = ERB.new(File.read(file_path)).result
       YAML.safe_load(yaml_content)
@@ -65,7 +65,7 @@ module MyApplicationPandarov
     def load_config(dir)
       configs = {}
       Dir.glob(File.join(dir, '*.yaml')).each do |file|
-        next if File.basename(file) == 'default_config.yaml' # не дублювати
+        next if File.basename(file) == 'default_config.yaml'
 
         yaml_content = ERB.new(File.read(file)).result
         configs.merge!(YAML.safe_load(yaml_content) || {})
