@@ -47,6 +47,12 @@ module MyApplicationPandarov
       puts JSON.pretty_generate(@config_data)
     end
 
+    # 🔹 Додано класовий метод
+    def self.load_config(file_path)
+      yaml_content = ERB.new(File.read(file_path)).result
+      YAML.safe_load(yaml_content)
+    end
+
     private
 
     # Завантаження основного YAML файлу

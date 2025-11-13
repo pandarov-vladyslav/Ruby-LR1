@@ -1,6 +1,6 @@
-name: Practical Cotton Hat, price: 444.0, description: Perferendis laborum facilis nam et quia sunt molestiae quo repellendus., category: Toys, image_path: media//nulla.png
-name: Rustic Rubber Gloves, price: 384.0, description: Temporibus exercitationem quia aut aut adipisci velit odit expedita voluptatem., category: Jewelry, image_path: media//ut.png
-name: Small Leather Bag, price: 116.0, description: Corrupti et amet ipsum praesentium vero ut rerum impedit fuga., category: Electronics, image_path: media//repellendus.png
-name: Fantastic Granite Coat, price: 431.0, description: Sint dolorum sed animi asperiores voluptate quo quibusdam illo aut., category: Grocery & Sports, image_path: media//unde.png
-name: Intelligent Wool Gloves, price: 411.0, description: Vel culpa unde aut atque sunt animi dolorem consequuntur excepturi., category: Sports, image_path: media//modi.png
+name: Practical Granite Table, price: 408.0, description: Harum cupiditate temporibus quia quasi explicabo provident aut libero maiores., category: Health, Electronics & Shoes, image_path: media//perferendis.png
+name: Practical Linen Pants, price: 316.0, description: Quod expedita nihil quisquam rerum doloribus vel hic numquam ullam., category: Games & Outdoors, image_path: media//quia.png
+name: Fantastic Plastic Hat, price: 387.0, description: Atque tempora alias consequatur voluptates aspernatur aut autem ipsam et., category: Electronics & Movies, image_path: media//fugiat.png
+name: Enormous Concrete Shoes, price: 294.0, description: Ratione sint nobis eum in voluptatem sed ut ex quos., category: Books, image_path: media//id.png
+name: Intelligent Steel Coat, price: 260.0, description: Et aut fugit sit ea sed ea impedit cum nam., category: Electronics, Shoes & Kids, image_path: media//voluptatem.png
 name: Спеціальний товар, price: 999, description: Це тестовий опис, category: Вітаміни, image_path: media/vitamins/special_item.png

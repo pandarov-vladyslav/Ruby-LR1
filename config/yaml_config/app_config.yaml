@@ -1,0 +1,29 @@
+default:
+  root_dir: "E:/LW1/Ruby LR1"
+  config_dir: "config"
+  yaml_dir: "config/yaml_config"
+  media_dir: "media"
+
+database_config:
+  database_type: "sqlite"
+  sqlite_database:
+    db_file: "db/local_database.sqlite"
+    timeout: 5000
+    pool_size: 5
+  mongodb_database:
+    uri: "mongodb://localhost:27017"
+    db_name: "my_database"
+
+logging:
+  directory: "logs"
+  level: "DEBUG"
+  files:
+    application_log: "app.log"
+    error_log: "error.log"
+
+web_scraping:
+  start_page: "https://life.com.ua"
+  product_name_selector: ".product-title"
+  product_price_selector: ".product-price__item"
+  product_description_selector: ".product-description"
+  product_image_selector: ".gallery__link"
