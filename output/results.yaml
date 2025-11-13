@@ -1,0 +1,26 @@
+---
+- :name: Спеціальний товар
+  :price: 999
+  :description: Це тестовий опис
+  :category: Вітаміни
+  :image_path: media/vitamins/special_item.png
+- :name: Товар 1
+  :price: 385
+  :description: Опис товару 1
+  :category: Категорія 1
+  :image_path: media/item1.png
+- :name: Товар 2
+  :price: 86
+  :description: Опис товару 2
+  :category: Категорія 2
+  :image_path: media/item2.png
+- :name: Товар 3
+  :price: 412
+  :description: Опис товару 3
+  :category: Категорія 3
+  :image_path: media/item3.png
+- :name: Товар 4
+  :price: 69
+  :description: Опис товару 4
+  :category: Категорія 4
+  :image_path: media/item4.png

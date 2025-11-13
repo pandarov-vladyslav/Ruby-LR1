@@ -8,3 +8,8 @@ gem 'json'
 gem 'nokogiri'
 gem 'rubocop', require: false
 gem 'faker'
+
+# Нові гем-ки для версії 3.6
+gem 'pony'
+gem 'sidekiq'
+gem 'redis'

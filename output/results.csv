@@ -1,0 +1,6 @@
+name,price,description,category,image_path
+Спеціальний товар,999,Це тестовий опис,Вітаміни,media/vitamins/special_item.png
+Товар 1,385,Опис товару 1,Категорія 1,media/item1.png
+Товар 2,86,Опис товару 2,Категорія 2,media/item2.png
+Товар 3,412,Опис товару 3,Категорія 3,media/item3.png
+Товар 4,69,Опис товару 4,Категорія 4,media/item4.png

@@ -1,6 +1,6 @@
-name: Practical Granite Table, price: 408.0, description: Harum cupiditate temporibus quia quasi explicabo provident aut libero maiores., category: Health, Electronics & Shoes, image_path: media//perferendis.png
-name: Practical Linen Pants, price: 316.0, description: Quod expedita nihil quisquam rerum doloribus vel hic numquam ullam., category: Games & Outdoors, image_path: media//quia.png
-name: Fantastic Plastic Hat, price: 387.0, description: Atque tempora alias consequatur voluptates aspernatur aut autem ipsam et., category: Electronics & Movies, image_path: media//fugiat.png
-name: Enormous Concrete Shoes, price: 294.0, description: Ratione sint nobis eum in voluptatem sed ut ex quos., category: Books, image_path: media//id.png
-name: Intelligent Steel Coat, price: 260.0, description: Et aut fugit sit ea sed ea impedit cum nam., category: Electronics, Shoes & Kids, image_path: media//voluptatem.png
+name: Lightweight Aluminum Car, price: 385.0, description: Nam voluptas aut ut qui dolorem esse facere occaecati neque., category: Shoes, image_path: media//sit.png
+name: Gorgeous Copper Shirt, price: 418.0, description: Labore aut qui odio eos molestiae eveniet dolor quia recusandae., category: Kids, image_path: media//perspiciatis.png
+name: Practical Wooden Watch, price: 148.0, description: Exercitationem et labore neque omnis sit velit itaque recusandae quam., category: Computers, Music & Movies, image_path: media//corrupti.png
+name: Synergistic Aluminum Knife, price: 20.0, description: Nulla ratione qui et et nemo quia sit quaerat sit., category: Shoes, Automotive & Sports, image_path: media//suscipit.png
+name: Durable Rubber Computer, price: 495.0, description: Est ut unde et aut nam asperiores iste est et., category: Home & Industrial, image_path: media//sapiente.png
 name: Спеціальний товар, price: 999, description: Це тестовий опис, category: Вітаміни, image_path: media/vitamins/special_item.png

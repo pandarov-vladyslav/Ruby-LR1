@@ -9,6 +9,7 @@ require_relative 'cart'
 require_relative 'configurator'
 require_relative 'simple_website_parser'
 require_relative 'database_connector'
+require_relative 'engine'
 
 include MyApplicationPandarov
 
@@ -81,11 +82,9 @@ begin
   # -----------------------------
   # 5️⃣ Тестування SimpleWebsiteParser
   # -----------------------------
-  puts "\n--- Тестування SimpleWebsiteParser ---"
   config = AppConfigLoader.load_config('config/yaml_config/app_config.yaml')
   parser = MyApplicationPandarov::SimpleWebsiteParser.new(config)
   parser.start_parse
-
 
   # -----------------------------
   # 6️⃣ Тестування DatabaseConnector
@@ -104,6 +103,19 @@ begin
   mongo_connector.connect_to_database
   puts "db = #{mongo_connector.db.inspect}"
   mongo_connector.close_connection
+
+  # -----------------------------
+  # 7️⃣ Тестування Engine (версія 3.6)
+  # -----------------------------
+  puts "\n--- Тестування Engine (версія 3.6) ---"
+
+  engine = MyApplicationPandarov::Engine.new(configurator)
+
+  # Додаємо товари з Cart в Engine
+  engine.cart = cart
+
+  # Запуск всіх етапів
+  engine.run
 
 rescue StandardError => e
   LoggerManager.log_error("Помилка виконання main.rb: #{e.message}")
