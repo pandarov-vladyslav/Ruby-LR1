@@ -7,8 +7,8 @@ require_relative File.join(__dir__, 'app_config_loader')
 require_relative File.join(__dir__, 'logger_manager')
 require_relative File.join(__dir__, 'item')
 require_relative File.join(__dir__, 'cart')
-
 require_relative File.join(__dir__, 'configurator')
+require_relative File.join(__dir__, 'simple_website_parser')
 
 include MyApplicationPandarov
 
@@ -18,9 +18,11 @@ begin
   loader.load_libs
 
   # 2️⃣ Завантаження конфігурацій
+  app_config = nil
   loader.config('config/default_config.yaml', 'config') do |config|
     puts "✅ Конфігурації завантажено!"
     loader.pretty_print_config_data
+    app_config = config # зберігаємо для подальшого використання
 
     # 3️⃣ Ініціалізація логування
     LoggerManager.initialize_logger(config['logging'])
@@ -33,13 +35,11 @@ begin
   puts "\n--- Тестування Cart ---"
 
   cart = Cart.new
-
-  # Генерація 5 тестових товарів
   cart.generate_test_items(5)
   puts "Додано фейкові товари:"
   cart.show_all_items
 
-  # Додамо конкретний товар через блок
+  # Додаємо тестовий товар
   item = Item.new(name: "Спеціальний товар", price: 999) do |i|
     i.description = "Це тестовий опис"
     i.category = "Вітаміни"
@@ -50,7 +50,7 @@ begin
   puts "\nПісля додавання спеціального товару:"
   cart.show_all_items
 
-  # Використовуємо методи Enumerable
+  # Приклад використання Enumerable
   expensive_items = cart.select { |i| i.price > 500 }
   puts "\nТовари з ціною > 500:"
   expensive_items.each { |i| puts i.info }
@@ -69,20 +69,29 @@ begin
   configurator = Configurator.new
   puts "Доступні методи: #{Configurator.available_methods}"
 
-  # Налаштування конфігурацій з тестовим неправильним ключем
   configurator.configure(
     run_website_parser: 1,
     run_save_to_csv: 1,
     run_save_to_yaml: 1,
     run_save_to_sqlite: 1,
     run_save_to_mongodb: 1,
-    invalid_key: 1 # Попередження про недійсний ключ
+    invalid_key: 1 # навмисно некоректний ключ
   )
 
   puts "\nПоточна конфігурація Configurator:"
   configurator.config.each do |key, value|
     puts "#{key}: #{value}"
   end
+
+  # -----------------------------
+  # 6️⃣ Тестування SimpleWebsiteParser (3.4)
+  # -----------------------------
+  puts "\n--- Тестування SimpleWebsiteParser ---"
+
+  # ✅ Використовуємо вже завантажену конфігурацію
+  parser = MyApplicationPandarov::SimpleWebsiteParser.new(loader.config_data)
+  parser.start_parse
+
 
 rescue StandardError => e
   LoggerManager.log_error("Помилка виконання main.rb: #{e.message}")

@@ -1,0 +1,17 @@
+---
+- :name: Вітамін C
+  :price: 120
+  :category: Вітаміни
+  :link: https://example.com/vitamin-c
+- :name: Магній B6
+  :price: 240
+  :category: Мінерали
+  :link: https://example.com/magnesium-b6
+- :name: Цинк
+  :price: 180
+  :category: Мікроелементи
+  :link: https://example.com/zinc
+- :name: Омега 3
+  :price: 320
+  :category: Жири
+  :link: https://example.com/omega-3

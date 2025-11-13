@@ -1,6 +1,6 @@
-name: Durable Bronze Keyboard, price: 64.0, description: Sapiente beatae non non blanditiis alias quia qui cum nostrum., category: Home, Kids & Toys, image_path: media//quo.png
-name: Gorgeous Marble Watch, price: 23.0, description: Eum illo reiciendis adipisci omnis animi minus eos dignissimos laboriosam., category: Health, image_path: media//veniam.png
-name: Rustic Paper Bottle, price: 457.0, description: Saepe minima mollitia laudantium sunt soluta ipsum incidunt numquam eum., category: Movies, image_path: media//et.png
-name: Ergonomic Granite Bench, price: 254.0, description: Dolor vero similique voluptatem consequatur libero neque dolorem quia distinctio., category: Tools, image_path: media//consequatur.png
-name: Heavy Duty Iron Keyboard, price: 386.0, description: Possimus quia est non qui quod sint neque totam et., category: Home, Kids & Sports, image_path: media//dignissimos.png
+name: Practical Cotton Hat, price: 444.0, description: Perferendis laborum facilis nam et quia sunt molestiae quo repellendus., category: Toys, image_path: media//nulla.png
+name: Rustic Rubber Gloves, price: 384.0, description: Temporibus exercitationem quia aut aut adipisci velit odit expedita voluptatem., category: Jewelry, image_path: media//ut.png
+name: Small Leather Bag, price: 116.0, description: Corrupti et amet ipsum praesentium vero ut rerum impedit fuga., category: Electronics, image_path: media//repellendus.png
+name: Fantastic Granite Coat, price: 431.0, description: Sint dolorum sed animi asperiores voluptate quo quibusdam illo aut., category: Grocery & Sports, image_path: media//unde.png
+name: Intelligent Wool Gloves, price: 411.0, description: Vel culpa unde aut atque sunt animi dolorem consequuntur excepturi., category: Sports, image_path: media//modi.png
 name: Спеціальний товар, price: 999, description: Це тестовий опис, category: Вітаміни, image_path: media/vitamins/special_item.png
