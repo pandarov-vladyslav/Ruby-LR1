@@ -2,32 +2,32 @@
 
 module MyApplicationPandarov
   class Engine
-    attr_reader :config
     attr_accessor :cart
+    attr_reader :config
 
     def initialize(configurator)
       @config = configurator.config
-      @cart = Cart.new
+      @cart = []
       initialize_logger
-      puts "✅ Engine версії 3.6 ініціалізовано!"
+      log("Engine версії 4.0 ініціалізовано!")
     end
 
-    # Метод run запускає усі етапи роботи двигуна
+    # Основний запуск
     def run
-      puts "--- Початок виконання Engine ---"
-      
-      run_website_parser if config['run_website_parser'] == 1
-      run_save_to_csv if config['run_save_to_csv'] == 1
-      run_save_to_json if config['run_save_to_json'] == 1
-      run_save_to_yaml if config['run_save_to_yaml'] == 1
-      run_save_to_sqlite if config['run_save_to_sqlite'] == 1
-      run_save_to_mongodb if config['run_save_to_mongodb'] == 1
+      log("--- Початок виконання Engine ---")
 
-      archive_results('output', 'output/results.zip')
+      run_method(:run_website_parser)
+      run_method(:run_save_to_csv)
+      run_method(:run_save_to_json)
+      run_method(:run_save_to_yaml)
+      run_method(:run_save_to_sqlite)
+      run_method(:run_save_to_mongodb)
 
-      puts "--- Завершення виконання Engine ---"
+      archive_results('output', 'output/results_v4.zip')
+
+      log("--- Завершення виконання Engine ---")
     rescue StandardError => e
-      puts "❌ Виникла помилка під час run: #{e.message}"
+      log_error("Помилка під час run: #{e.message}")
     end
 
     private
@@ -37,59 +37,66 @@ module MyApplicationPandarov
       log_dir = config.dig('logging', 'directory') || 'logs'
       Dir.mkdir(log_dir) unless Dir.exist?(log_dir)
       @log_file = File.join(log_dir, config.dig('logging', 'files', 'application_log') || 'app.log')
-      puts "📝 Логування ініціалізовано в #{log_dir}"
+      log("Логування ініціалізовано в #{log_dir}")
     end
 
-    # Методи для різних етапів
-    def run_website_parser
-      puts "--- Початок парсингу сайту ---"
-      # Тут викликається твій SimpleWebsiteParser
-      puts "--- Парсинг завершено ---"
+    # Виконання одного методу з конфігурації
+    def run_method(method_name)
+      return unless config.dig(method_name.to_s) == 1
+
+      log("🔹 Початок #{method_name}")
+      send(method_name)
+      log("🔹 Завершено #{method_name}")
     rescue StandardError => e
-      puts "❌ Помилка run_website_parser: #{e.message}"
+      log_error("Помилка #{method_name}: #{e.message}")
+    end
+
+    # Методи роботи
+    def run_website_parser
+      parser = SimpleWebsiteParser.new(config)
+      parser.start_parse
     end
 
     def run_save_to_csv
-      puts "Метод run_save_to_csv виконано"
-    rescue StandardError => e
-      puts "❌ Помилка run_save_to_csv: #{e.message}"
+      cart.save_to_csv("output/cart_v4.csv") if cart.any?
     end
 
     def run_save_to_json
-      puts "Метод run_save_to_json виконано"
-    rescue StandardError => e
-      puts "❌ Помилка run_save_to_json: #{e.message}"
+      cart.save_to_json("output/cart_v4.json") if cart.any?
     end
 
     def run_save_to_yaml
-      puts "Метод run_save_to_yaml виконано"
-    rescue StandardError => e
-      puts "❌ Помилка run_save_to_yaml: #{e.message}"
+      cart.save_to_yml("output/yml_items_v4") if cart.any?
     end
 
     def run_save_to_sqlite
-      puts "🔹 Підключення до SQLite (імітація через Hash)"
-      puts "🔹 Збережено в SQLite"
-      puts "🔹 З'єднання закрито"
-      puts "Метод run_save_to_sqlite виконано"
-    rescue StandardError => e
-      puts "❌ Помилка run_save_to_sqlite: #{e.message}"
+      connector = DatabaseConnector.new(config)
+      connector.connect_to_database
+      connector.close_connection
     end
 
     def run_save_to_mongodb
-      puts "🔹 Підключення до MongoDB (імітація через Hash)"
-      puts "🔹 Збережено в MongoDB"
-      puts "🔹 З'єднання закрито"
-      puts "Метод run_save_to_mongodb виконано"
-    rescue StandardError => e
-      puts "❌ Помилка run_save_to_mongodb: #{e.message}"
+      config['database_config']['database_type'] = 'mongodb'
+      connector = DatabaseConnector.new(config)
+      connector.connect_to_database
+      connector.close_connection
     end
 
-    # Архівування результатів
+    # Архівування
     def archive_results(folder, archive_file)
-      puts "✅ Архів створено: #{archive_file}"
-    rescue StandardError => e
-      puts "❌ Помилка архівації: #{e.message}"
+      log("Архів створено: #{archive_file}")
+    end
+
+    # Логи
+    def log(message)
+      puts message
+      File.open(@log_file, 'a') { |f| f.puts("[INFO] #{Time.now} - #{message}") }
+    end
+
+    def log_error(message)
+      puts "#{message}"
+      error_file = @log_file.gsub('app.log', 'error.log')
+      File.open(error_file, 'a') { |f| f.puts("[ERROR] #{Time.now} - #{message}") }
     end
   end
 end

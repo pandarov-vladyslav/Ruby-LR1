@@ -1,38 +1,38 @@
 [
   {
-    "name": "Lightweight Aluminum Car",
-    "price": 385.0,
-    "description": "Nam voluptas aut ut qui dolorem esse facere occaecati neque.",
-    "category": "Shoes",
-    "image_path": "media//sit.png"
+    "name": "Small Wooden Watch",
+    "price": 304.0,
+    "description": "Numquam in debitis enim est consequatur laboriosam iste ut ducimus.",
+    "category": "Clothing, Baby & Toys",
+    "image_path": "media//numquam.png"
   },
   {
-    "name": "Gorgeous Copper Shirt",
-    "price": 418.0,
-    "description": "Labore aut qui odio eos molestiae eveniet dolor quia recusandae.",
-    "category": "Kids",
-    "image_path": "media//perspiciatis.png"
+    "name": "Small Paper Watch",
+    "price": 31.0,
+    "description": "Dolores suscipit in a voluptatem et velit non veniam unde.",
+    "category": "Tools & Jewelry",
+    "image_path": "media//eos.png"
   },
   {
-    "name": "Practical Wooden Watch",
-    "price": 148.0,
-    "description": "Exercitationem et labore neque omnis sit velit itaque recusandae quam.",
-    "category": "Computers, Music & Movies",
-    "image_path": "media//corrupti.png"
+    "name": "Synergistic Wooden Pants",
+    "price": 157.0,
+    "description": "Sapiente et a aut et perspiciatis maiores quia consectetur incidunt.",
+    "category": "Shoes, Health & Jewelry",
+    "image_path": "media//voluptates.png"
   },
   {
-    "name": "Synergistic Aluminum Knife",
-    "price": 20.0,
-    "description": "Nulla ratione qui et et nemo quia sit quaerat sit.",
-    "category": "Shoes, Automotive & Sports",
-    "image_path": "media//suscipit.png"
+    "name": "Rustic Wool Computer",
+    "price": 455.0,
+    "description": "Ut id sapiente quia perspiciatis eveniet voluptatem soluta veniam qui.",
+    "category": "Movies & Computers",
+    "image_path": "media//eaque.png"
   },
   {
-    "name": "Durable Rubber Computer",
-    "price": 495.0,
-    "description": "Est ut unde et aut nam asperiores iste est et.",
-    "category": "Home & Industrial",
-    "image_path": "media//sapiente.png"
+    "name": "Rustic Steel Table",
+    "price": 338.0,
+    "description": "Et temporibus enim rem in quisquam dolor repellat inventore veritatis.",
+    "category": "Kids & Shoes",
+    "image_path": "media//magnam.png"
   },
   {
     "name": "Спеціальний товар",

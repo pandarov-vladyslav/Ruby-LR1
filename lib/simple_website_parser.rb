@@ -16,12 +16,12 @@ module MyApplicationPandarov
       @base_url = config['parser']['base_url'] rescue 'https://example.com'
       @output_path = 'output/parser_results'
       Dir.mkdir(@output_path) unless Dir.exist?(@output_path)
-      @logger.info("✅ Ініціалізовано SimpleWebsiteParser з базовою URL: #{@base_url}")
+      @logger.info("Ініціалізовано SimpleWebsiteParser з базовою URL: #{@base_url}")
     end
 
     # Основний метод запуску парсера
     def start_parse
-      @logger.info('🚀 Починаємо парсинг...')
+      @logger.info('Починаємо парсинг...')
       puts "\n--- Початок парсингу сайту ---"
 
       items = parse_fake_website
@@ -31,11 +31,11 @@ module MyApplicationPandarov
       save_to_csv(items)
       save_to_yaml(items)
 
-      @logger.info('✅ Парсинг завершено успішно.')
+      @logger.info('Парсинг завершено успішно.')
       puts "--- Парсинг завершено ---"
     rescue StandardError => e
-      @logger.error("❌ Помилка під час парсингу: #{e.message}")
-      puts "❌ Помилка під час парсингу: #{e.message}"
+      @logger.error("Помилка під час парсингу: #{e.message}")
+      puts "Помилка під час парсингу: #{e.message}"
     end
 
     private
@@ -54,7 +54,7 @@ module MyApplicationPandarov
     def save_to_json(data)
       file = File.join(@output_path, 'parsed_items.json')
       File.write(file, JSON.pretty_generate(data))
-      @logger.info("💾 Дані збережено у JSON: #{file}")
+      @logger.info("Дані збережено у JSON: #{file}")
     end
 
     def save_to_csv(data)
@@ -63,13 +63,13 @@ module MyApplicationPandarov
         csv << data.first.keys
         data.each { |row| csv << row.values }
       end
-      @logger.info("💾 Дані збережено у CSV: #{file}")
+      @logger.info("Дані збережено у CSV: #{file}")
     end
 
     def save_to_yaml(data)
       file = File.join(@output_path, 'parsed_items.yml')
       File.write(file, YAML.dump(data))
-      @logger.info("💾 Дані збережено у YAML: #{file}")
+      @logger.info("Дані збережено у YAML: #{file}")
     end
   end
 end
